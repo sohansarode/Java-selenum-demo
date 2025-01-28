@@ -34,7 +34,6 @@ public class Login_Page extends Reports {
 
 	public Login_Page() {
 		PageFactory.initElements(driver, this);
-		//Test
 	}
 
 //--------------------------------------------------------------------------------------------------//	
