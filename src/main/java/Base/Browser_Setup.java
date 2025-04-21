@@ -1,18 +1,19 @@
-package Base;
+package base;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import utils.ConfigReader;
 
-public class Browser_Setup extends Read_Property {
+public class Browser_Setup extends ConfigReader {
 	Thread popupHandlerThread = new Thread(() -> checkAndClosePopup());
 
-//----------------------------------------------------------------------------------------------------------//
-	// This method is executed before the test suite starts.
-	@BeforeSuite
+	// @BeforeSuite
 	protected void Browser_Launch() throws Exception {
 
 		// Start recording the screen for test execution.
@@ -21,27 +22,26 @@ public class Browser_Setup extends Read_Property {
 		// Read properties from the main property file.
 		Read_Property_File();
 		ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-notifications");
-		// Get the environment value from the properties file.
-		String Environment = prop.getProperty("Environment");
+		options.addArguments("--disable-notifications");
+
+		// Get Environment from CLI or fallback to config file
+		String Environment = System.getProperty("environment", prop.getProperty("Environment"));
 		String Browser;
 
-		// Depending on the environment, read properties from QA or Live property file.
+		// Load respective environment properties
 		if ("QA".equalsIgnoreCase(Environment)) {
 			Read_QA_Property();
-			Browser = prop1.getProperty("Browser");
+			Browser = System.getProperty("browser", prop1.getProperty("Browser"));
 		} else if ("Live".equalsIgnoreCase(Environment)) {
 			Read_Live_Property();
-			Browser = prop2.getProperty("Browser");
+			Browser = System.getProperty("browser", prop2.getProperty("Browser"));
 		} else {
-			// Throw an exception if an invalid environment is specified.
-			throw new RuntimeException("Invalid environment specified in properties file");
+			throw new RuntimeException("Invalid environment specified: " + Environment);
 		}
 
-		// Launch the specified browser based on the property.
+		// Launch the specified browser
 		switch (Browser.toLowerCase()) {
 		case "chrome":
-			
 			driver = new ChromeDriver(options);
 			break;
 		case "firefox":
@@ -51,8 +51,7 @@ public class Browser_Setup extends Read_Property {
 			driver = new EdgeDriver();
 			break;
 		default:
-			// Throw an exception if an invalid browser is specified.
-			throw new RuntimeException("Invalid browser specified in properties file");
+			throw new RuntimeException("Invalid browser specified: " + Browser);
 		}
 
 		// Maximize the browser window.
@@ -63,16 +62,15 @@ public class Browser_Setup extends Read_Property {
 		logger.info("::::Entering URL::::");
 		driver.navigate().to(prop1.getProperty("url"));
 	}
-//----------------------------------------------------------------------------------------------------------//
 
-	// This method is use to quit browser
-	@AfterSuite
-	protected void Close_Browser() throws Exception {
-
-		// driver.quit();
-		// popupHandlerThread.interrupt();
-		My_Screen_Recorder.Stop_Recording();
+	@BeforeSuite(alwaysRun = true)
+	public void bridgeBrowserSetup() throws Exception {
+		new Browser_Setup().Browser_Launch(); // ✅ Calls your actual browser setup
 	}
 
-//----------------------------------------------------------------------------------------------------------//
+	@AfterSuite
+	protected void Close_Browser() throws Exception {
+		driver.quit();
+		My_Screen_Recorder.Stop_Recording();
+	}
 }

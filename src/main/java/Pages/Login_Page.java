@@ -1,19 +1,18 @@
-package Pages;
+package pages;
 
-import org.openqa.selenium.By;
+import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
-import Base.Reports;
-import Base.Waits;
+import utils.ReportUtils;
+import utils.WaitUtils;
 
-public class Login_Page extends Reports {
+public class Login_Page extends ReportUtils {
 
-	@FindBy(xpath = "//*[text()=\"Visit Site\"]")
-	private WebElement Visitbtn;
-
-	@FindBy(xpath = "//*[@name=\"email\"]")
+	@FindBy(xpath = "//*[@name=\"username\"]")
 	private WebElement Email;
 
 	@FindBy(xpath = "//*[@name=\"password\"]")
@@ -22,137 +21,61 @@ public class Login_Page extends Reports {
 	@FindBy(xpath = "//*[@type=\"submit\"]")
 	private WebElement Loginbtn;
 
-	@FindBy(xpath = "//*[text()=\"Invalid Credentials\"]")
+	@FindBy(xpath = "//*[text()=\"Invalid credentials\"]")
 	private WebElement Invalid_credential_message;
 
-	@FindBy(xpath = "//*[text()=\"User not found\"]")
-	private WebElement User_not_found_message;
+	@FindBy(xpath = "//*[@class=\"oxd-topbar-header-breadcrumb\"]")
+	private WebElement Dashboard;
 
 	@FindBy(xpath = "//*[@class=\"symbol symbol-40px me-5\"]//*[@alt=\"Logo\"]")
-	private WebElement Profile;
-//--------------------------------------------------------------------------------------------------//	
+	private List<WebElement> Profile1;
+
+	SoftAssert softAssert = new SoftAssert();
 
 	public Login_Page() {
 		PageFactory.initElements(driver, this);
+
 	}
 
-//--------------------------------------------------------------------------------------------------//	
-
-	public void Login_test_with_Invalid_data(String email, String object) {
+	public void Login_test_with_Invalid_data(String email, String password) {
 		try {
+			//softAssert.assertTrue(Is_Displayed(Email), "Email field is missing or not enabled");
+			Sendkeys(Email, email);
 
-			if (Is_Displayed(Email) && Is_Enabled(Email)) {
-				Clear_And_SendKeys(Email, email);
-				Reports.Info("Email Entered");
-			} else {
-				throw new Exception("Email field not displayed");
-			}
+			//Assert.assertTrue(Is_Displayed(Password) && Is_Enabled(Password),"Password field is missing or not enabled");
+			Sendkeys(Password, password);
 
-			if (Is_Displayed(Password) && Is_Enabled(Password)) {
-				Clear_And_SendKeys(Password, object);
-				Reports.Info("Password Entered");
-			} else {
-				throw new Exception("Password field not displayed");
-			}
+			//Assert.assertTrue(Is_Displayed(Loginbtn) && Is_Clickable(Loginbtn),"Login button is missing or not clickable");
+			Click(Loginbtn);
 
-			if (Is_Displayed(Loginbtn) && Is_Clickable(Loginbtn)) {
-				Click(Loginbtn);
-				Reports.Info("Login Btn Clicked");
-			} else {
-				throw new Exception("Login Btn not Clicked");
-			}
+			//Assert.assertTrue(Is_Displayed(Invalid_credential_message), "Invalid Credentials message not displayed");
 
-			if (Is_Displayed(Invalid_credential_message)) {
-				Reports.Pass_Test("InValid Login Test Pass");
-			}
-		} catch (Exception e) {
-			Reports.Fail_Test("InLogin Test Failed: " + e.getMessage());
-			e.printStackTrace();
+			ReportUtils.Pass_Test("Invalid Login Test Passed");
+		} catch (AssertionError e) {
+			ReportUtils.Fail_Test("Invalid Login Test Failed: " + e.getMessage());
+			throw e;
 		}
 	}
 
-//--------------------------------------------------------------------------------------------------//	
-
-	public void Login_test_with_Invalid_User_data(String email, String object) {
+	public void Login_test_with_valid_data(String email, String password) throws InterruptedException {
 		try {
 
-			if (Waits.waitForVisibilityOfElement(By.xpath("//*[text()=\"Visit Site\"]"), 5)) {
-				Click(Visitbtn);
-				Reports.Info("Visit Btn Clicked");
-			} else {
+			//Assert.assertTrue(Is_Displayed(Email) && Is_Enabled(Email), "Email field is missing or not enabled");
+			Clear_And_SendKeys(Email, email);
 
-			}
-			
-			if (Is_Displayed(Email) && Is_Enabled(Email)) {
-				Clear_And_SendKeys(Email, email);
-				Reports.Info("Email Entered");
-			} else {
-				throw new Exception("Email field not displayed");
-			}
+			//Assert.assertTrue(Is_Displayed(Password) && Is_Enabled(Password),"Password field is missing or not enabled");
+			Clear_And_SendKeys(Password, password);
 
-			if (Is_Displayed(Password) && Is_Enabled(Password)) {
-				Clear_And_SendKeys(Password, object);
-				Reports.Info("Password Entered");
-			} else {
-				throw new Exception("Password field not displayed");
-			}
+			//Assert.assertTrue(Is_Displayed(Loginbtn) && Is_Clickable(Loginbtn),"Login button is missing or not clickable");
+			Click(Loginbtn);
 
-			if (Is_Displayed(Loginbtn) && Is_Clickable(Loginbtn)) {
-				Click(Loginbtn);
-				Reports.Info("Login Btn Clicked");
-			} else {
-				throw new Exception("Login Btn not Clicked");
-			}
+			WaitUtils.Hard_Wait(3000);
+			Assert.assertTrue(Is_Displayed(Dashboard), "Dashboard is not displayed");
 
-			if (Is_Displayed(User_not_found_message)) {
-				Reports.Pass_Test(
-						"InValid Login with non-existing user Test Pass -->" + User_not_found_message.getText());
-			}
-		} catch (Exception e) {
-			Reports.Fail_Test("InValid Login with non-existing user Test Failed: " + e.getMessage());
-			e.printStackTrace();
+			ReportUtils.Pass_Test("Valid Login Test Passed");
+		} catch (AssertionError e) {
+			ReportUtils.Fail_Test("Valid Login Test Failed: " + e.getMessage());
+			throw e;
 		}
 	}
-
-//--------------------------------------------------------------------------------------------------//	
-
-	public void Login_test_with_valid_data(String email, String password) {
-		try {
-
-			if (Waits.waitForVisibilityOfElement(By.xpath("//*[text()=\"Visit Site\"]"), 5)) {
-				Click(Visitbtn);
-				Reports.Info("Visit Btn Clicked");
-			} else {
-
-			}
-			Waits.Hard_Wait(3000);
-			Handle_Alerts("accept");
-			if (Is_Displayed(Email) && Is_Enabled(Email)) {
-				Clear_And_SendKeys(Email, email);
-				Reports.Info("Email Entered");
-			} else {
-				throw new Exception("Email field not displayed");
-			}
-
-			if (Is_Displayed(Password) && Is_Enabled(Password)) {
-				Clear_And_SendKeys(Password, password);
-				Reports.Info("Password Entered");
-			} else {
-				throw new Exception("Password field not displayed");
-			}
-
-			if (Is_Displayed(Loginbtn) && Is_Clickable(Loginbtn)) {
-				Click(Loginbtn);
-				Reports.Info("Login Btn Clicked");
-			} else {
-				throw new Exception("Login Btn not Clicked");
-			}
-
-		} catch (Exception e) {
-			Reports.Fail_Test("Valid Login Test Failed: " + e.getMessage());
-			e.printStackTrace();
-		}
-	}
-
-//--------------------------------------------------------------------------------------------------//
 }

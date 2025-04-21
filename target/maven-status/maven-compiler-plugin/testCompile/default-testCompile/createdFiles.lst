@@ -1,6 +1,6 @@
-Allmodulestest\Knowledge_Centre_Module_test.class
-Allmodulestest\WSET_courses_module_test.class
-Allmodulestest\Travel_module_test.class
-Tests\Checkoutwithcoupontest.class
-Allmodulestest\Speciality_Courses_module_test.class
-Tests\Chekoutflowtest.class
+pagestest\LoginJson.class
+pagestest\Login.class
+api\Testbase.class
+apitest\Get_Profile.class
+pagestest\LoginExceldataprovider.class
+api\Reports.class

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-04-11T15:12:58 IST" name="RegressionSuite" finished-at="2025-04-11T15:13:08 IST" duration-ms="9800">
+    <groups>
+      <group name="regression">
+        <method signature="LoginExceldataprovider.Login_test_with_Invalid_data_test(java.lang.String,java.lang.String)[pri:0, instance:pagestest.LoginExceldataprovider@5d8445d7]" name="Login_test_with_Invalid_data_test" class="pagestest.LoginExceldataprovider"/>
+        <method signature="LoginExceldataprovider.Login_test_with_valid_data_test(java.lang.String,java.lang.String)[pri:1, instance:pagestest.LoginExceldataprovider@5d8445d7]" name="Login_test_with_valid_data_test" class="pagestest.LoginExceldataprovider"/>
+      </group> <!-- regression -->
+      <group name="smoke">
+        <method signature="LoginExceldataprovider.Login_test_with_valid_data_test(java.lang.String,java.lang.String)[pri:1, instance:pagestest.LoginExceldataprovider@5d8445d7]" name="Login_test_with_valid_data_test" class="pagestest.LoginExceldataprovider"/>
+      </group> <!-- smoke -->
+    </groups>
+    <test started-at="2025-04-11T15:12:58 IST" name="RegressionTests" finished-at="2025-04-11T15:13:08 IST" duration-ms="9800">
+      <class name="pagestest.LoginExceldataprovider">
+        <test-method is-config="true" signature="bridgeBrowserSetup()[pri:0, instance:pagestest.LoginExceldataprovider@5d8445d7]" started-at="2025-04-11T15:12:49 IST" name="bridgeBrowserSetup" finished-at="2025-04-11T15:12:58 IST" duration-ms="9265" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bridgeBrowserSetup -->
+        <test-method is-config="true" signature="Set_Up_Report()[pri:0, instance:pagestest.LoginExceldataprovider@5d8445d7]" started-at="2025-04-11T15:12:58 IST" name="Set_Up_Report" finished-at="2025-04-11T15:12:58 IST" duration-ms="59" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Set_Up_Report -->
+        <test-method signature="Login_test_with_Invalid_data_test(java.lang.String,java.lang.String)[pri:0, instance:pagestest.LoginExceldataprovider@5d8445d7]" started-at="2025-04-11T15:12:59 IST" name="Login_test_with_Invalid_data_test" data-provider="invalidLoginData" finished-at="2025-04-11T15:13:02 IST" duration-ms="3043" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1111]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login_test_with_Invalid_data_test -->
+        <test-method signature="Login_test_with_valid_data_test(java.lang.String,java.lang.String)[pri:1, instance:pagestest.LoginExceldataprovider@5d8445d7]" started-at="2025-04-11T15:13:02 IST" name="Login_test_with_valid_data_test" data-provider="validLoginData" finished-at="2025-04-11T15:13:08 IST" duration-ms="6023" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[admin123]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login_test_with_valid_data_test -->
+        <test-method is-config="true" signature="End_Test()[pri:0, instance:pagestest.LoginExceldataprovider@5d8445d7]" started-at="2025-04-11T15:13:08 IST" name="End_Test" finished-at="2025-04-11T15:13:08 IST" duration-ms="148" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- End_Test -->
+      </class> <!-- pagestest.LoginExceldataprovider -->
+    </test> <!-- RegressionTests -->
+  </suite> <!-- RegressionSuite -->
+</testng-results>

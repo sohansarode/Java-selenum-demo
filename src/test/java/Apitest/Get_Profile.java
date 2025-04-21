@@ -1,11 +1,11 @@
-package Apitest;
+package apitest;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.testng.annotations.Test;
 
-import Api.Testbase;
+import api.Testbase;
 
 
 public class Get_Profile extends Testbase {

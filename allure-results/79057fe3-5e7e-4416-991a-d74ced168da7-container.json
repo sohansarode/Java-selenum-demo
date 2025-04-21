@@ -1,0 +1,1 @@
+{"uuid":"79057fe3-5e7e-4416-991a-d74ced168da7","name":"RegressionSuite","children":["3c98ea77-0489-4263-8340-675afabbac61"],"befores":[{"name":"bridgeBrowserSetup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1744364569391,"stop":1744364578650}],"afters":[],"start":1744364569383,"stop":1744364588476}

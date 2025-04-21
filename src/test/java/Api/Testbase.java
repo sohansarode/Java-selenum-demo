@@ -1,8 +1,7 @@
-package Api;
+package api;
 
 import java.util.Map;
 import org.apache.logging.log4j.*;
-import org.hamcrest.MatcherAssert;
 import org.json.simple.JSONObject;
 import org.junit.Assert;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -10,10 +9,8 @@ import com.relevantcodes.extentreports.ExtentTest;
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
-import io.restassured.http.Method;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBodyExtractionOptions;
 import io.restassured.specification.RequestSpecification;
 
 public class Testbase {
