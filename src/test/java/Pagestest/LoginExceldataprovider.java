@@ -11,9 +11,9 @@ public class LoginExceldataprovider extends ReportUtils {
 
 	@DataProvider(name = "invalidLoginData")
 	public Object[][] provideInvalidData() throws IOException {
-		Object[][] data = ExcelUtils.getSheetData(
-				"C:\\Users\\Lenovo\\eclipse-workspace\\Java-selenum-demo-main2\\src\\main\\resources\\data\\Excels\\Logindataprovider.xlsx",
-				"Loginpageinvalid");
+		String projectPath = System.getProperty("user.dir");
+		String filePath = projectPath + "/src/main/resources/data/Excels/Logindataprovider.xlsx";
+		Object[][] data = ExcelUtils.getSheetData(filePath, "Loginpageinvalid");
 
 		System.out.println("Invalid Login Data:");
 		for (Object[] row : data) {
@@ -25,9 +25,9 @@ public class LoginExceldataprovider extends ReportUtils {
 
 	@DataProvider(name = "validLoginData")
 	public Object[][] provideValidData() throws IOException {
-		Object[][] data = ExcelUtils.getSheetData(
-				"C:\\Users\\Lenovo\\eclipse-workspace\\Java-selenum-demo-main2\\src\\main\\resources\\data\\Excels\\Logindataprovider.xlsx",
-				"Loginpagevalid");
+		String projectPath = System.getProperty("user.dir");
+		String filePath = projectPath + "/src/main/resources/data/Excels/Logindataprovider.xlsx";
+		Object[][] data = ExcelUtils.getSheetData(filePath, "Loginpagevalid");
 
 		System.out.println("Valid Login Data:");
 		for (Object[] row : data) {

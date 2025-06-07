@@ -5,10 +5,12 @@
     <classes>
       <class name="pagestest.LoginExceldataprovider">
         <methods>
-          <include name="Login_test_with_valid_data_test" invocation-numbers="0"/>
+          <include name="bridgeBrowserSetup"/>
+          <include name="Login_test_with_valid_data_test"/>
           <include name="Set_Up_Report"/>
-          <include name="Login_test_with_Invalid_data_test" invocation-numbers="0"/>
+          <include name="Login_test_with_Invalid_data_test"/>
           <include name="End_Test"/>
+          <include name="Close_Browser"/>
         </methods>
       </class> <!-- pagestest.LoginExceldataprovider -->
     </classes>

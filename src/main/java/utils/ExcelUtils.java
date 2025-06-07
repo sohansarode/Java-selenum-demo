@@ -24,7 +24,9 @@ public class ExcelUtils extends Browser_Setup {
 		FileInputStream fis;
 		try {
 			// Provide the file path to the Excel file
-			String filePath = "C:\\Users\\Lenovo\\eclipse-workspace\\Java-selenum-demo-main2\\src\\main\\resources\\data\\Excels\\file.xlsx";
+			String projectPath = System.getProperty("user.dir");
+			String filePath = projectPath + "/src/main/resources/data/Excels/file.xlsx";
+
 
 			// Create a FileInputStream to read the Excel file
 			fis = new FileInputStream(filePath);

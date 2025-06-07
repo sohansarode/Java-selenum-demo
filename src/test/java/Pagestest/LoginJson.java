@@ -10,7 +10,9 @@ public class LoginJson extends ReportUtils {
 
 	{
 		try {
-			JsonReader jsonReader = new JsonReader("C:\\Users\\Lenovo\\eclipse-workspace\\Java-selenum-demo-main2\\src\\main\\resources\\data\\Jsons\\Normalfile.json"); // Update with correct path
+			String projectPath = System.getProperty("user.dir");
+			String filePath = projectPath + "/src/main/resources/data/Jsons/Normalfile.json";
+			JsonReader jsonReader = new JsonReader(filePath); // Update with correct path
 			Validemail = jsonReader.getValue("Email");
 			ValidPassword = jsonReader.getValue("Password");
 		} catch (Exception e) {

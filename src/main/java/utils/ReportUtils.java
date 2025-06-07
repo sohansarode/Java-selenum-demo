@@ -1,8 +1,6 @@
 package utils;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -28,12 +26,15 @@ public class ReportUtils extends Utilities {
 	// This will overwrite the result always
 	@BeforeTest(alwaysRun = true)
 	public void Set_Up_Report() {
-		File file = new File("results");
+		String projectPath = System.getProperty("user.dir");
+		String reportFolderPath = projectPath + "/Reports";
+
+		File file = new File(reportFolderPath);
 		if (!file.exists()) {
 			file.mkdir();
 		}
 
-		Filepath = "results/Result.html";
+		Filepath = reportFolderPath + "/ExtentReport.html";
 		Report = new ExtentReports(Filepath, true);
 	}
 
