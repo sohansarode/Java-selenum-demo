@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-04-11T15:10:08 IST" name="GroupedSuite" finished-at="2025-04-11T15:10:13 IST" duration-ms="4458">
+    <groups>
+      <group name="regression">
+        <method signature="LoginExceldataprovider.Login_test_with_valid_data_test(java.lang.String,java.lang.String)[pri:1, instance:pagestest.LoginExceldataprovider@5489c777]" name="Login_test_with_valid_data_test" class="pagestest.LoginExceldataprovider"/>
+      </group> <!-- regression -->
+      <group name="smoke">
+        <method signature="LoginExceldataprovider.Login_test_with_valid_data_test(java.lang.String,java.lang.String)[pri:1, instance:pagestest.LoginExceldataprovider@5489c777]" name="Login_test_with_valid_data_test" class="pagestest.LoginExceldataprovider"/>
+      </group> <!-- smoke -->
+    </groups>
+    <test started-at="2025-04-11T15:10:08 IST" name="SmokeTests" finished-at="2025-04-11T15:10:13 IST" duration-ms="4458">
+      <class name="pagestest.LoginExceldataprovider">
+        <test-method is-config="true" signature="bridgeBrowserSetup()[pri:0, instance:pagestest.LoginExceldataprovider@5489c777]" started-at="2025-04-11T15:10:03 IST" name="bridgeBrowserSetup" finished-at="2025-04-11T15:10:08 IST" duration-ms="5599" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bridgeBrowserSetup -->
+        <test-method is-config="true" signature="Set_Up_Report()[pri:0, instance:pagestest.LoginExceldataprovider@5489c777]" started-at="2025-04-11T15:10:08 IST" name="Set_Up_Report" finished-at="2025-04-11T15:10:09 IST" duration-ms="66" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Set_Up_Report -->
+        <test-method signature="Login_test_with_valid_data_test(java.lang.String,java.lang.String)[pri:1, instance:pagestest.LoginExceldataprovider@5489c777]" started-at="2025-04-11T15:10:09 IST" name="Login_test_with_valid_data_test" data-provider="validLoginData" finished-at="2025-04-11T15:10:13 IST" duration-ms="3601" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[admin123]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login_test_with_valid_data_test -->
+        <test-method is-config="true" signature="End_Test()[pri:0, instance:pagestest.LoginExceldataprovider@5489c777]" started-at="2025-04-11T15:10:13 IST" name="End_Test" finished-at="2025-04-11T15:10:13 IST" duration-ms="254" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- End_Test -->
+      </class> <!-- pagestest.LoginExceldataprovider -->
+    </test> <!-- SmokeTests -->
+  </suite> <!-- GroupedSuite -->
+</testng-results>

@@ -1,0 +1,3 @@
+mvn test -DsuiteXmlFile=testng-smoke.xml
+mvn test -DsuiteXmlFile=testng-regression.xml   //to run on specific suite
+mvn test -DsuiteXmlFile=testng-regression.xml -Denvironment=QA -Dbrowser=chrome  //to run on specific env and browser

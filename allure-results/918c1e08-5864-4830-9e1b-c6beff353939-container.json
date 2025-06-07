@@ -1,0 +1,1 @@
+{"uuid":"918c1e08-5864-4830-9e1b-c6beff353939","name":"GroupedSuite","children":["1152f3d1-9a95-4d8a-8a5e-78a39386587d"],"befores":[{"name":"bridgeBrowserSetup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1744364161076,"stop":1744364167873}],"afters":[],"start":1744364161066,"stop":1744364173318}
